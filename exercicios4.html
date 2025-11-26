@@ -1,0 +1,75 @@
+<button onclick="window.history.back()">Voltar</button>
+
+<div class="box">
+    <h2>Digite frutas e exiba “Eu gosto de [fruta]”</h2>
+    <p>Digite frutas separadas por vírgula:</p>
+    <input type="text" id="frutasInput" placeholder="Ex: maçã, banana, uva">
+    <button onclick="mostrarFrutas()">Mostrar</button>
+    <p><strong>Resultado:</strong></p>
+    <ul id="listaFrutas"></ul>
+</div>
+
+<div class="box">
+    <h2>Digite preços e mostre “Preço com desconto: …”</h2>
+    <p>Digite preços separados por vírgula:</p>
+    <input type="text" id="descontosInput" placeholder="Ex: 50, 120, 200">
+    <button onclick="mostrarDescontos()">Calcular</button>
+    <p><strong>Resultado:</strong></p>
+    <ul id="listaDescontos"></ul>
+</div>
+
+<div class="box">
+    <h2>Digite notas e exiba “Aprovado” ou “Reprovado”</h2>
+    <p>Digite notas separadas por vírgula:</p>
+    <input type="text" id="notasForEachInput" placeholder="Ex: 5, 7, 9, 3">
+    <button onclick="avaliarNotas()">Avaliar</button>
+    <p><strong>Resultado:</strong></p>
+    <ul id="listaNotas"></ul>
+</div>
+
+<script>
+
+    function mostrarFrutas() {
+        let entrada = document.getElementById("frutasInput").value;
+        let frutas = entrada.split(",").map(f => f.trim());
+
+        let lista = document.getElementById("listaFrutas");
+        lista.innerHTML = "";
+
+        frutas.forEach(function(fruta) {
+            let li = document.createElement("li");
+            li.textContent = "Eu gosto de " + fruta;
+            lista.appendChild(li);
+        });
+    }
+
+    function mostrarDescontos() {
+        let entrada = document.getElementById("descontosInput").value;
+        let precos = entrada.split(",").map(p => Number(p.trim()));
+
+        let lista = document.getElementById("listaDescontos");
+        lista.innerHTML = "";
+
+        precos.forEach(function(preco) {
+            let li = document.createElement("li");
+            let descontado = (preco * 0.9).toFixed(2);
+            li.textContent = "Preço com desconto: R$ " + descontado;
+            lista.appendChild(li);
+        });
+    }
+
+    function avaliarNotas() {
+        let entrada = document.getElementById("notasForEachInput").value;
+        let notas = entrada.split(",").map(n => Number(n.trim()));
+
+        let lista = document.getElementById("listaNotas");
+        lista.innerHTML = "";
+
+        notas.forEach(function(nota) {
+            let li = document.createElement("li");
+            li.textContent = nota >= 7 ? nota + " — Aprovado" : nota + " — Reprovado";
+            lista.appendChild(li);
+        });
+    }
+
+</script>
