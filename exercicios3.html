@@ -1,0 +1,67 @@
+<button onclick="window.location.href='exercicios4.html'">Avançar</button>
+<button onclick="window.history.back()">Voltar</button>
+
+
+<div class="box">
+    <h2>Calcular a média das idades</h2>
+    <p>Digite idades separadas por vírgula:</p>
+    <input type="text" id="idadesInput" >
+    <button onclick="mediaIdades()">Calcular</button>
+    <p><strong>Resultado:</strong> <span id="resIdades"></span></p>
+</div>
+
+<div class="box">
+    <h2>Calcular o produto de todos os números</h2>
+    <p>Digite números separados por vírgula:</p>
+    <input type="text" id="produtoInput" >
+    <button onclick="produtoTotal()">Calcular</button>
+    <p><strong>Resultado:</strong> <span id="resProduto"></span></p>
+</div>
+
+<div class="box">
+    <h2>Juntar nomes em uma única string usando reduce()</h2>
+    <p>Digite nomes separados por vírgula:</p>
+    <input type="text" id="nomesReduceInput" >
+    <button onclick="juntarNomes()">Juntar</button>
+    <p><strong>Resultado:</strong> <span id="resNomesReduce"></span></p>
+</div>
+
+<script>
+
+    function mediaIdades() {
+        let entrada = document.getElementById("idadesInput").value;
+        let idades = entrada.split(",").map(i => Number(i.trim()));
+
+        let soma = idades.reduce(function(total, atual) {
+            return total + atual;
+        }, 0);
+
+        let media = soma / idades.length;
+
+        document.getElementById("resIdades").innerText =
+            "Média: " + media.toFixed(2);
+    }
+
+    function produtoTotal() {
+        let entrada = document.getElementById("produtoInput").value;
+        let numeros = entrada.split(",").map(n => Number(n.trim()));
+
+        let produto = numeros.reduce(function(total, atual) {
+            return total * atual;
+        }, 1);
+
+        document.getElementById("resProduto").innerText = produto;
+    }
+
+    function juntarNomes() {
+        let entrada = document.getElementById("nomesReduceInput").value;
+        let nomes = entrada.split(",").map(n => n.trim());
+
+        let resultado = nomes.reduce(function(total, atual) {
+            return total + " " + atual;
+        });
+
+        document.getElementById("resNomesReduce").innerText = resultado.trim();
+    }
+
+</script>

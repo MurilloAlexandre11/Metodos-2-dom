@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios de Filtro</title>
+</head>
+<body
+
+
+    <button onclick="window.location.href='exercicios2.html'">Avançar</button>
+
+    <h1>Exercícios com Filtros</h1>
+
+    <div class="box">
+        <h2>Filtrar nomes que começam com A</h2>
+        <p>Digite nomes separados por vírgula:</p>
+        <input type="text" id="nomesInput">
+        <button onclick="filtrarNomes()">Filtrar</button>
+        <p><strong>Resultado:</strong> <span id="resNomes"></span></p>
+    </div>
+
+    <div class="box">
+        <h2>Mostrar notas maiores ou iguais a 7</h2>
+        <p>Digite notas separadas por vírgula:</p>
+        <input type="text" id="notasInput" >
+        <button onclick="filtrarNotas()">Filtrar</button>
+        <p><strong>Resultado:</strong> <span id="resNotas"></span></p>
+    </div>
+
+    <div class="box">
+        <h2>Filtrar números múltiplos de 3</h2>
+        <p>Digite números separados por vírgula:</p>
+        <input type="text" id="numerosInput" >
+        <button onclick="filtrarMultiplos()">Filtrar</button>
+        <p><strong>Resultado:</strong> <span id="resMultiplos"></span></p>
+    </div>
+
+    <script>
+
+        function filtrarNomes() {
+            let entrada = document.getElementById("nomesInput").value;
+            let nomes = entrada.split(",").map(n => n.trim());
+
+            let filtrados = nomes.filter(function(nome) {
+                return nome[0] === "A" || nome[0] === "a";
+            });
+
+            document.getElementById("resNomes").innerText = filtrados.join(", ");
+        }
+
+        function filtrarNotas() {
+            let entrada = document.getElementById("notasInput").value;
+            let notas = entrada.split(",").map(n => Number(n.trim()));
+
+            let maiores = notas.filter(function(nota) {
+                return nota >= 7;
+            });
+
+            document.getElementById("resNotas").innerText = maiores.join(", ");
+        }
+
+        function filtrarMultiplos() {
+            let entrada = document.getElementById("numerosInput").value;
+            let nums = entrada.split(",").map(n => Number(n.trim()));
+
+            let multiplos = nums.filter(function(num) {
+                return num % 3 === 0;
+            });
+
+            document.getElementById("resMultiplos").innerText = multiplos.join(", ");
+        }
+
+    </script>
+
+</body>
+</html>

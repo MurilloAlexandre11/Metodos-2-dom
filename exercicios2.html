@@ -1,0 +1,67 @@
+<button onclick="window.location.href='exercicios3.html'">Avançar</button>
+<button onclick="window.history.back()">Voltar</button>
+
+
+<div class="box">
+    <h2>Encontrar o primeiro número negativo</h2>
+    <p>Digite números separados por vírgula:</p>
+    <input type="text" id="negativosInput" >
+    <button onclick="primeiroNegativo()">Encontrar</button>
+    <p><strong>Resultado:</strong> <span id="resNegativo"></span></p>
+</div>
+
+<div class="box">
+    <h2>Encontrar o primeiro preço acima de 100</h2>
+    <p>Digite preços separados por vírgula:</p>
+    <input type="text" id="precosInput" >
+    <button onclick="precoAcima()">Encontrar</button>
+    <p><strong>Resultado:</strong> <span id="resPreco"></span></p>
+</div>
+
+<div class="box">
+    <h2>Encontrar a primeira palavra que possui a letra "z"</h2>
+    <p>Digite palavras separadas por vírgula:</p>
+    <input type="text" id="palavrasInput" >
+    <button onclick="palavraComZ()">Encontrar</button>
+    <p><strong>Resultado:</strong> <span id="resPalavraZ"></span></p>
+</div>
+
+<script>
+
+    function primeiroNegativo() {
+        let entrada = document.getElementById("negativosInput").value;
+        let nums = entrada.split(",").map(n => Number(n.trim()));
+
+        let encontrado = nums.find(function(num) {
+            return num < 0;
+        });
+
+        document.getElementById("resNegativo").innerText =
+            encontrado !== undefined ? encontrado : "Nenhum negativo encontrado";
+    }
+
+    function precoAcima() {
+        let entrada = document.getElementById("precosInput").value;
+        let precos = entrada.split(",").map(p => Number(p.trim()));
+
+        let encontrado = precos.find(function(preco) {
+            return preco > 100;
+        });
+
+        document.getElementById("resPreco").innerText =
+            encontrado !== undefined ? "R$ " + encontrado : "Nenhum preço acima de 100 encontrado";
+    }
+
+    function palavraComZ() {
+        let entrada = document.getElementById("palavrasInput").value;
+        let palavras = entrada.split(",").map(p => p.trim());
+
+        let encontrada = palavras.find(function(palavra) {
+            return palavra.toLowerCase().includes("z");
+        });
+
+        document.getElementById("resPalavraZ").innerText =
+            encontrada || "Nenhuma palavra contém a letra Z";
+    }
+
+</script>
